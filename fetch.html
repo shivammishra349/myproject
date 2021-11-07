@@ -1,0 +1,87 @@
+<html>
+<body>
+	<table border = "20">
+	
+		<thead>
+			<th> NAME </th>
+			<th> AGE </th>
+			<th> SALARY </th>
+			<th> CITY </th>
+			<th> POST </th>
+		</thead>
+		<tbody id="records">
+		</tbody>
+	</table>
+</body>
+
+<script>
+let offset = 'A2';
+let limit = 'Z999';
+const sheetid = "1jpzTuAFCAsHquOtmU39vgBeFMUHvcbQuUiNGbUsbPRY";
+const apikey = "AIzaSyDtucjYLyHs9lHPyjTNd6oBtxvMVVP6T60"
+const sheetname = "sheet1";
+const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetid}/values/${sheetname}?key=${apikey}`;
+var sheet_data = [];
+fetch(url).then(data => data.json())
+.then(data => {
+sheet_data = data.values;
+console.table(sheet_data);
+
+	output_str ="";
+	for(i=0;i<sheet_data.length;i++){
+		output_str +=`<tr>`;
+		output_str +=`<td>${sheet_data[i][0]}</td>`;
+		output_str +=`<td>${sheet_data[i][1]}</td>`;
+		output_str +=`<td>${sheet_data[i][2]}</td>`;
+		output_str +=`<td>${sheet_data[i][3]}</td>`;
+		output_str +=`<td>${sheet_data[i][4]}</td>`;
+		output_str +=`</tr>`;
+	}
+document.getElementById("records").innerHTML=output_str;
+
+
+});
+
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
